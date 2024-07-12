@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:system_auth/screens/authenticate/log_in.dart';
 import 'package:system_auth/screens/authenticate/sign_in.dart';
+import 'package:system_auth/screens/onboarding/middlepage.dart';
 
 class OnboardingScreen11 extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
                 onNext: () {
                   // Navigate to the login page
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LogIn()));
+                      MaterialPageRoute(builder: (context) => OnboardingScreen33()));
                 },
               ),
             ],
@@ -42,39 +43,39 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
             right: 0,
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(1, (index) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5),
-                      width: 10,
-                      height: 10,
-                      decoration: BoxDecoration(
-                        color:
-                            _currentPage == index ? Colors.black : Colors.grey,
-                        shape: BoxShape.circle,
-                      ),
-                    );
-                  }),
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: List.generate(1, (index) {
+                //     return Container(
+                //       margin: EdgeInsets.symmetric(horizontal: 5),
+                //       width: 10,
+                //       height: 10,
+                //       decoration: BoxDecoration(
+                //         color:
+                //             _currentPage == index ? Colors.black : Colors.grey,
+                //         shape: BoxShape.circle,
+                //       ),
+                //     );
+                //   }),
+                // ),
                 SizedBox(height: 10),
-                GestureDetector(
-                  onTap: () {
-                    // Navigate to sign-in page
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignIn()));
-                  },
-                  child: Text(
-                    "Already have an account? Sign In",
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     // Navigate to sign-in page
+                //     Navigator.push(context,
+                //         MaterialPageRoute(builder: (context) => SignIn()));
+                //   },
+                //   child: Text(
+                //     "Already have an account? Sign In",
+                //     style: GoogleFonts.poppins(
+                //       textStyle: TextStyle(
+                //         fontSize: 16,
+                //         color: Colors.black,
+                //         decoration: TextDecoration.underline,
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

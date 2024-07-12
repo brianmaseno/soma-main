@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:system_auth/screens/authenticate/log_in.dart';
+import 'package:system_auth/screens/authenticate/sign_in.dart';
 
 class OnboardingScreen33 extends StatelessWidget {
   @override
@@ -29,6 +31,10 @@ class OnboardingScreen33 extends StatelessWidget {
                         elevation: 5,
                       ),
                       onPressed: () {
+                        Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LogIn()),
+      );
                         // Navigate to Login Screen
                       },
                       child: Text('Login'),
@@ -45,6 +51,10 @@ class OnboardingScreen33 extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
+                        Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const SignIn()),
+      );
                         // Navigate to Signup Screen
                       },
                       child: Text('Sign Up'),
