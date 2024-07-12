@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LogIn> with SingleTickerProviderStateMixin
   final ValueNotifier<bool> _isButtonEnabled = ValueNotifier(false);
 
   bool _obscureText = true;
-  bool _rememberMe = false;
+  bool _rememberMe = true; // Set rememberMe to true by default
   bool _isLoading = false;
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -70,15 +70,12 @@ class _LoginScreenState extends State<LogIn> with SingleTickerProviderStateMixin
   }
 
   Future<void> _loadRememberMe() async {
-    bool rememberMe = (await _storage.read(key: 'remember_me')) == 'true';
-    if (rememberMe) {
-      String? email = await _storage.read(key: 'email');
-      if (email != null) {
-        _emailController.text = email;
-      }
+    String? email = await _storage.read(key: 'email');
+    if (email != null) {
+      _emailController.text = email;
     }
     setState(() {
-      _rememberMe = rememberMe;
+      _rememberMe = true; // Ensure rememberMe is true when loading
     });
   }
 
@@ -124,7 +121,7 @@ class _LoginScreenState extends State<LogIn> with SingleTickerProviderStateMixin
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) =>  const GradePage()),
+        MaterialPageRoute(builder: (context) => const Homepage()),
       );
     } else {
       showDialog(
@@ -176,225 +173,220 @@ class _LoginScreenState extends State<LogIn> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  body: Container(
-    // color: Colors.lightBlueAccent,
-    color:Color(0xFF397EF3)    ,child: Stack(
-      children: [
-        SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 50),
-                Image.asset(
-                  'assets/soma3.png',
-                  height: 150.0,
-                  width: 150.0,
-                  color: Colors.white,
-                ),
-                const SizedBox(height: 20),
-                 Text(
-                  'Enter your email and Password',
-                  style: GoogleFonts.poppins(
-                    textStyle: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+      body: Container(
+        color: Color.fromRGBO(4, 133, 162, 1),
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 50),
+                    Image.asset(
+                      'assets/soma3.png',
+                      height: 150.0,
+                      width: 150.0,
                       color: Colors.white,
                     ),
-                  ),
-                ),
-                const SizedBox(height: 70),
-                TextField(
-                  controller: _emailController,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email, color: Colors.white),
-                    hintText: 'Email: brian@gmail.com',
-                    hintStyle: const TextStyle(color: Colors.white),
-                    filled: true,  // Set to true to enable background fill
-                    fillColor: Colors.grey[600],
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.green),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextField(
-                  controller: _passwordController,
-                  style: TextStyle(color: Colors.white),
-                  obscureText: _obscureText,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.lock, color: Colors.white),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _obscureText ? Icons.visibility_outlined : Icons.visibility_off,
-                        color: Colors.white,
+                    const SizedBox(height: 20),
+                    Text(
+                      'Enter your email and Password',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                      onPressed: _togglePasswordVisibility,
                     ),
-                    hintText: 'Password',
-                    hintStyle: const TextStyle(color: Colors.white),
-                    filled: true,  // Set to true to enable background fill
-                    fillColor: Colors.grey[600],
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                    const SizedBox(height: 70),
+                    TextField(
+                      controller: _emailController,
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email, color: Colors.white),
+                        hintText: 'Email: brian@gmail.com',
+                        hintStyle: const TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: Colors.grey[600],
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.green),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.green),
-                      borderRadius: BorderRadius.circular(10),
+                    const SizedBox(height: 20),
+                    TextField(
+                      controller: _passwordController,
+                      style: TextStyle(color: Colors.white),
+                      obscureText: _obscureText,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock, color: Colors.white),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscureText ? Icons.visibility_outlined : Icons.visibility_off,
+                            color: Colors.white,
+                          ),
+                          onPressed: _togglePasswordVisibility,
+                        ),
+                        hintText: 'Password',
+                        hintStyle: const TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: Colors.grey[600],
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.green),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                    const SizedBox(height: 10),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ValueListenableBuilder<bool>(
-                          valueListenable: _isButtonEnabled,
-                          builder: (context, value, child) {
-                            return Switch(
+                        Row(
+                          children: [
+                            Switch(
                               value: _rememberMe,
-                              onChanged: value
-                                  ? (bool newValue) {
+                              onChanged: (bool newValue) {
                                 setState(() {
                                   _rememberMe = newValue;
                                 });
-                              }
-                                  : null,
+                              },
                               activeColor: Colors.teal,
-                            );
-                          },
-                        ),
-                         Text('Remember me',
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ForgotPass()),
-                        );
-                      },
-                      child:  Text(
-                        'Forgot password?',
-                        style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                ValueListenableBuilder<bool>(
-                  valueListenable: _isButtonEnabled,
-                  builder: (context, value, child) {
-                    return ScaleTransition(
-                      scale: _animation,
-                      child: ElevatedButton(
-                        onPressed: value
-                            ? () {
-                          _animationController.forward().then((_) {
-                            _animationController.reverse();
-                            _login();
-                          });
-                        }
-                            : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green[500],
-                          // padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                          textStyle: const TextStyle(fontSize: 18),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
-                          ),
-                        ),
-                        child:  Text('Login',
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                            Text(
+                              'Remember me',
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const SizedBox(height:100),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                         Text(
-                          "Don't have an account?",
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
+                          ],
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacement(
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const SignIn()),
+                              MaterialPageRoute(builder: (context) => const ForgotPass()),
                             );
                           },
-                          child:  Text('Create new one ',
+                          child: Text(
+                            'Forgot password?',
                             style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
-                                fontSize: 16,
+                                fontSize: 13,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Colors.red,
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
+                    const SizedBox(height: 20),
+                    ValueListenableBuilder<bool>(
+                      valueListenable: _isButtonEnabled,
+                      builder: (context, value, child) {
+                        return ScaleTransition(
+                          scale: _animation,
+                          child: ElevatedButton(
+                            onPressed: value
+                                ? () {
+                                    _animationController.forward().then((_) {
+                                      _animationController.reverse();
+                                      _login();
+                                    });
+                                  }
+                                : null,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green[500],
+                              textStyle: const TextStyle(fontSize: 18),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            child: Text(
+                              'Login',
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 100),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Don't have an account?",
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const SignIn()),
+                                );
+                              },
+                              child: Text(
+                                'Create new one ',
+                                style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
                   ],
                 ),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ),
-        ),
-        if (_isLoading)
-          Scaffold(
-            backgroundColor: Colors.black.withOpacity(0.5),
-            body: Center(
-              child: LoadingAnimationWidget.staggeredDotsWave(
-                color: Colors.teal,
-                size: 100,
               ),
             ),
-          ),
-      ],
-    ),
-    ),
+            if (_isLoading)
+              Scaffold(
+                backgroundColor: Colors.black.withOpacity(0.5),
+                body: Center(
+                  child: LoadingAnimationWidget.staggeredDotsWave(
+                    color: Colors.teal,
+                    size: 100,
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:system_auth/config.dart';
 import 'package:system_auth/screens/home/profile/userprofile.dart';
 import 'package:system_auth/screens/home/topics.dart';
+import 'package:system_auth/trialpages/settings.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -98,8 +99,9 @@ class _PamelaState extends State<Homepage> {
         children: [
           HomeScreen(subjectsFuture: _subjectsFuture, firstName: _firstName),
           const ProfilePage(),
-          const SettingsScreen(),
+           SettingsPage(),
           const NotificationsScreen(),
+           
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -154,7 +156,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '👋 Hi ${firstName ?? 'User'},',
+                        '👋 Hi there ${firstName ?? 'User'},',
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 20,
@@ -216,7 +218,7 @@ class HomeScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
-            color: const Color(0xD20F142F),
+            color: Color.fromRGBO(4, 133, 162, 1),
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Row(
@@ -462,21 +464,6 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
-      body: const Center(
-        child: Text('Settings Page'),
-      ),
-    );
-  }
-}
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});

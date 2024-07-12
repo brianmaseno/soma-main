@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:system_auth/screens/authenticate/log_in.dart';
+import 'package:system_auth/screens/home/profile/userprofile.dart';
 import 'package:system_auth/screens/onboarding/info/on.dart';
+import 'package:system_auth/screens/onboarding/onboarding_page.dart';
 import 'package:system_auth/screens/onboarding/splashscreen.dart';
 import 'package:system_auth/themes/theme_provider.dart';
 import 'package:system_auth/trialpages/apply.dart';
+import 'package:system_auth/trialpages/settings.dart';
 
 void main() {
   runApp(
@@ -23,8 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // home: OnboardingScreen11(),
       home: OnboardingScreen11(),
-      // home: Homepage(),
     );
   }
 }

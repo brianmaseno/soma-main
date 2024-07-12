@@ -309,7 +309,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       // backgroundColor: Colors.grey,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF00072D),
+        backgroundColor: const Color.fromRGBO(4, 133, 162, 1),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           color: Colors.white, // Change icon color to white
@@ -344,7 +344,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Container(
                   height: 300,
                   decoration: const BoxDecoration(
-                    color: Color(0xFF00072D),
+                    color: Color.fromRGBO(4, 133, 162, 1),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(50),
                       bottomRight: Radius.circular(50),
@@ -375,7 +375,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         _name ?? 'Loading...',
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -390,7 +390,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             _grade != null ? 'Grade: $_grade' : 'Loading...',
                             style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
-                                fontSize: 20,
+                                fontSize: 17,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -428,7 +428,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             _name ?? 'Name',
                             style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
-                                fontSize: 20,
+                                fontSize: 18,
 
                                 color: Colors.black,
                               ),
@@ -459,7 +459,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             _grade != null ? 'Grade: $_grade' : 'Grade',
                             style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
-                                fontSize: 20,
+                                fontSize: 18,
 
                                 color: Colors.black,
                               ),
@@ -506,7 +506,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 16, // Adjust font size as needed
+                          fontSize: 14, // Adjust font size as needed
                         ),
                       ),
                     ],
@@ -540,7 +540,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 16, // Adjust font size as needed
+                          fontSize: 15 // Adjust font size as needed
                         ),
                       ),
                     ],

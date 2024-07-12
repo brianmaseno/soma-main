@@ -1,1 +1,1 @@
-final String BASE_URL='https://cow-mechanism-sacred-undertaken.trycloudflare.com';
+final String BASE_URL='https://somaapp.onrender.com/';

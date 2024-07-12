@@ -5,16 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:system_auth/screens/authenticate/sign_in.dart';
 import 'package:confetti/confetti.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: OnboardingScreen11(),
-    );
-  }
-}
 
 class OnboardingScreen11 extends StatefulWidget {
   @override

@@ -139,7 +139,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color:Color(0xFF397EF3), // Set background color here
+        color: Color.fromRGBO(4, 133, 162, 1), // Set background color here
         child: Stack(
           children: [
             SingleChildScrollView(
