@@ -1,10 +1,8 @@
-import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:system_auth/screens/authenticate/log_in.dart';
 import 'package:system_auth/screens/authenticate/sign_in.dart';
-import 'package:confetti/confetti.dart';
 
 class OnboardingScreen11 extends StatefulWidget {
   @override
@@ -20,9 +18,7 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
     return Scaffold(
       backgroundColor: const Color(0xFFFDF7F2),
       body: Stack(
-        
         children: [
-          
           PageView(
             controller: _pageController,
             onPageChanged: (index) {
@@ -33,15 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
             children: [
               IntroPage1(
                 onNext: () {
-                  _pageController.nextPage(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
-                  );
-                },
-              ),
-              IntroPage2(
-                onGetStarted: () {
-                  // Navigate to the sign-up page
+                  // Navigate to the login page
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LogIn()));
                 },
@@ -56,7 +44,7 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(2, (index) {
+                  children: List.generate(1, (index) {
                     return Container(
                       margin: EdgeInsets.symmetric(horizontal: 5),
                       width: 10,
@@ -114,14 +102,8 @@ class IntroPage1 extends StatelessWidget {
               repeat: true,
               width: 200,
               height: 200,
-            ), // App logo or icon
-            // Image.asset(
-            //   'assets/cat.gif', // Replace with your app logo path
-            //   width: 200,
-            //   height: 200,
-            // ),
+            ),
             SizedBox(height: 20),
-            // Title
             Center(
               child: Text(
                 'Hello Smartypants and welcome to Soma App',
@@ -135,7 +117,6 @@ class IntroPage1 extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            // Subtitle
             Text(
               'Unlock the world of knowledge and excel in your studies with Soma App',
               style: GoogleFonts.poppins(
@@ -146,7 +127,6 @@ class IntroPage1 extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            // Next button
             ElevatedButton(
               onPressed: onNext,
               style: ElevatedButton.styleFrom(
@@ -157,7 +137,7 @@ class IntroPage1 extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Next',
+                "Let's Get Started",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -168,107 +148,6 @@ class IntroPage1 extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class IntroPage2 extends StatefulWidget {
-  final VoidCallback onGetStarted;
-
-  IntroPage2({required this.onGetStarted});
-
-  @override
-  _IntroPage2State createState() => _IntroPage2State();
-}
-
-class _IntroPage2State extends State<IntroPage2> {
-  late ConfettiController _confettiController;
-
-  @override
-  void initState() {
-    super.initState();
-    _confettiController =
-        ConfettiController(duration: const Duration(seconds: 5));
-    _confettiController.play();
-  }
-
-  @override
-  void dispose() {
-    _confettiController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Lottie.asset(
-                        'assets/caterpillar.json',
-                        repeat: true,
-                        width: 200,
-                        height: 200,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'Lets get started!',
-                  style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 150),
-                // SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: widget.onGetStarted,
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(400, 50),
-                    backgroundColor: const Color(0xFF3E81F3),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                  child: Text(
-                    'Get Started',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        ConfettiWidget(
-          confettiController: _confettiController,
-          blastDirectionality: BlastDirectionality.explosive,
-          shouldLoop: true,
-          colors: const [
-            Colors.green,
-            Colors.blue,
-            Colors.pink,
-            Colors.orange,
-            Colors.purple
-          ],
-        ),
-      ],
     );
   }
 }
