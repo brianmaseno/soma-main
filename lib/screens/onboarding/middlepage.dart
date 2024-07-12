@@ -6,7 +6,7 @@ class OnboardingScreen33 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color.fromRGBO(4, 133, 162, 1),
+      backgroundColor:Color(0xFFFDF7F2),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40.0),
@@ -37,13 +37,13 @@ class OnboardingScreen33 extends StatelessWidget {
       );
                         // Navigate to Login Screen
                       },
-                      child: Text('Login'),
+                      child: Text('Login',style: TextStyle(color: Colors.black),),
                     ),
                     SizedBox(height: 20),
                     OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: Colors.white, 
-                        side: BorderSide(color: Colors.white, width: 2),
+                        foregroundColor: Colors.blue, 
+                        side: BorderSide(color: Colors.blue, width: 2),
                         padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
                         textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                         shape: RoundedRectangleBorder(
@@ -57,7 +57,7 @@ class OnboardingScreen33 extends StatelessWidget {
       );
                         // Navigate to Signup Screen
                       },
-                      child: Text('Sign Up'),
+                      child: Text('Sign Up',style: TextStyle(color: Colors.black),),
                     ),
                   ],
                 ),
