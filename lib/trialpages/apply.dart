@@ -100,7 +100,7 @@ class _PamelaState extends State<Homepage> {
           HomeScreen(subjectsFuture: _subjectsFuture, firstName: _firstName),
           const ProfilePage(),
            SettingsPage(),
-          const NotificationsScreen(),
+          
            
         ],
       ),
@@ -421,6 +421,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              trailing: Icon(Icons.arrow_forward_ios),
             ),
           ),
         );
@@ -448,35 +449,7 @@ class Subject {
   }
 }
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: const Center(
-        child: Text('Profile Page'),
-      ),
-    );
-  }
-}
 
 
-class NotificationsScreen extends StatelessWidget {
-  const NotificationsScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notifications'),
-      ),
-      body: const Center(
-        child: Text('Notifications Page'),
-      ),
-    );
-  }
-}
+

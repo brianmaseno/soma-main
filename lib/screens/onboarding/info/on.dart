@@ -2,10 +2,9 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:system_auth/screens/authenticate/log_in.dart';
 import 'package:system_auth/screens/authenticate/sign_in.dart';
 import 'package:confetti/confetti.dart';
-
-
 
 class OnboardingScreen11 extends StatefulWidget {
   @override
@@ -19,8 +18,11 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFDF7F2),
       body: Stack(
+        
         children: [
+          
           PageView(
             controller: _pageController,
             onPageChanged: (index) {
@@ -40,7 +42,8 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
               IntroPage2(
                 onGetStarted: () {
                   // Navigate to the sign-up page
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LogIn()));
                 },
               ),
             ],
@@ -59,7 +62,8 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
                       width: 10,
                       height: 10,
                       decoration: BoxDecoration(
-                        color: _currentPage == index ? Colors.black : Colors.grey,
+                        color:
+                            _currentPage == index ? Colors.black : Colors.grey,
                         shape: BoxShape.circle,
                       ),
                     );
@@ -69,7 +73,8 @@ class _OnboardingScreenState extends State<OnboardingScreen11> {
                 GestureDetector(
                   onTap: () {
                     // Navigate to sign-in page
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignIn()));
                   },
                   child: Text(
                     "Already have an account? Sign In",
@@ -104,12 +109,12 @@ class IntroPage1 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             Lottie.asset(
-  'assets/caterpillar.json',
-  repeat: true,
-  width: 200,
-  height: 200,
-),            // App logo or icon
+            Lottie.asset(
+              'assets/caterpillar.json',
+              repeat: true,
+              width: 200,
+              height: 200,
+            ), // App logo or icon
             // Image.asset(
             //   'assets/cat.gif', // Replace with your app logo path
             //   width: 200,
@@ -146,7 +151,7 @@ class IntroPage1 extends StatelessWidget {
               onPressed: onNext,
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(400, 50),
-                backgroundColor: Color(0xFF397EF3),
+                backgroundColor: Color(0xFF3E81F3),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -167,8 +172,6 @@ class IntroPage1 extends StatelessWidget {
   }
 }
 
-
-
 class IntroPage2 extends StatefulWidget {
   final VoidCallback onGetStarted;
 
@@ -184,7 +187,8 @@ class _IntroPage2State extends State<IntroPage2> {
   @override
   void initState() {
     super.initState();
-    _confettiController = ConfettiController(duration: const Duration(seconds: 5));
+    _confettiController =
+        ConfettiController(duration: const Duration(seconds: 5));
     _confettiController.play();
   }
 
@@ -228,13 +232,13 @@ class _IntroPage2State extends State<IntroPage2> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
-                SizedBox(height: 10),
+                SizedBox(height: 150),
+                // SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: widget.onGetStarted,
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(400, 50),
-                    backgroundColor: const Color(0xFF397EF3),
+                    backgroundColor: const Color(0xFF3E81F3),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),

@@ -1,1 +1,1 @@
-final String BASE_URL='https://somaapp.onrender.com/';
+final String BASE_URL='https://sunday-juvenile-theology-population.trycloudflare.com';

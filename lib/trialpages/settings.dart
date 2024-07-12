@@ -102,14 +102,14 @@ class SettingsPage extends StatelessWidget {
                   // Navigate to terms of service
                 },
               ),
-              SettingsTile(
-                title: 'Blocked Users',
-                subtitle: 'Manage blocked users',
-                leading: Icon(Icons.block),
-                onTap: () {
-                  // Navigate to blocked users
-                },
-              ),
+              // SettingsTile(
+              //   title: 'Blocked Users',
+              //   subtitle: 'Manage blocked users',
+              //   leading: Icon(Icons.block),
+              //   onTap: () {
+              //     // Navigate to blocked users
+              //   },
+              // ),
             ],
           ),
           Divider(),
